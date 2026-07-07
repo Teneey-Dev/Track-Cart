@@ -1,0 +1,13 @@
+# OS files (Windows)
+Thumbs.db
+desktop.ini
+
+# Editor files
+.vscode/
+*.swp
+
+# Environment/secrets
+.env
+
+# Logs
+*.log

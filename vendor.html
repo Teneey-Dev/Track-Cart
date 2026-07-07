@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TrackCart | Vendor Access</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="index.html" class="logo">TrackCart</a>
+  </nav>
+
+  <main class="vendor-auth">
+    <div class="vendor-auth-panel">
+
+      <div class="auth-toggle">
+        <button id="toggle-signup" class="toggle-btn active">New Vendor</button>
+        <button id="toggle-login" class="toggle-btn">Returning Vendor</button>
+      </div>
+
+      <!-- Sign Up section -->
+      <div id="signup-section">
+        <h1>Create Your Store</h1>
+        <p class="vendor-auth-subtext">Start tracking orders in seconds.</p>
+
+        <form id="signup-form" class="auth-form">
+          <label for="signup-store-name" class="visually-hidden">Store name</label>
+          <input type="text" id="signup-store-name" placeholder="Store name (e.g. DemoShop)">
+
+          <label for="signup-email" class="visually-hidden">Email</label>
+          <input type="email" id="signup-email" placeholder="Email">
+
+          <label for="signup-password" class="visually-hidden">Password</label>
+          <input type="password" id="signup-password" placeholder="Password">
+
+          <button type="submit" class="btn btn-primary">Create My Store</button>
+        </form>
+
+        <p class="divider">or</p>
+
+        <button id="signup-google" class="btn btn-outline btn-google">
+          Sign up with Google
+        </button>
+
+        <p id="signup-result" class="auth-result"></p>
+      </div>
+
+      <!-- Login section -->
+      <div id="login-section" class="hidden">
+        <h1>Welcome Back</h1>
+        <p class="vendor-auth-subtext">Log in to manage your store.</p>
+
+        <form id="login-form" class="auth-form">
+          <label for="login-email" class="visually-hidden">Email</label>
+          <input type="email" id="login-email" placeholder="Email">
+
+          <label for="login-password" class="visually-hidden">Password</label>
+          <input type="password" id="login-password" placeholder="Password">
+
+          <button type="submit" class="btn btn-primary">Log In</button>
+        </form>
+
+        <p class="divider">or</p>
+
+        <button id="login-google" class="btn btn-outline btn-google">
+          Sign in with Google
+        </button>
+
+        <p id="login-result" class="auth-result"></p>
+      </div>
+
+    </div>
+  </main>
+
+  <script type="module" src="js/script.js"></script>
+</body>
+</html>

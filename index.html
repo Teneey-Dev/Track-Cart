@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TrackCart | No More "Where's My Order?" DMs</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="logo">TrackCart</div>
+   <a href="vendor.html"><button class="btn btn-ghost">Vendor Signin</button></a> 
+  </nav>
+
+  <header class="hero">
+    <div class="hero-content">
+      <h1>No More "Where's My Order?" DMs</h1>
+      <p class="hero-subtext">Turn chaotic status requests into instant self-serve tracking. One link, zero friction, happy customers.</p>
+      <div class="hero-actions">
+       <a href="vendor.html" class="btn btn-primary">Get Started</a>
+        <a href="#tracking-widget" class="btn btn-outline">Track an Order</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="trust-strip">
+    <div class="trust-item"><span aria-hidden="true">☁️</span> No apps to download</div>
+    <div class="trust-item"><span aria-hidden="true">⚡</span> Real-time updates</div>
+    <div class="trust-item"><span aria-hidden="true">👥</span> Built for social sellers</div>
+    <div class="trust-item"><span aria-hidden="true">🎁</span> Free to start</div>
+  </section>
+
+  <section class="problem-solution">
+    <div class="section-intro">
+      <h2>From DM Chaos to Tracking Clarity</h2>
+      <p>Stop wasting hours answering the same question. Give your customers the power to check their own orders.</p>
+    </div>
+
+    <div class="comparison">
+      <div class="chaos-card">
+        <span class="badge badge-error">The Problem</span>
+        <div class="chat-bubble">Hey! Did you ship my order yet? Ordered yesterday.</div>
+        <div class="chat-bubble">Status???? Need it by Friday.</div>
+        <div class="chat-bubble">Can I get a tracking number? Hello?</div>
+      </div>
+
+      <div class="clarity-card">
+        <span class="badge badge-primary">The Solution</span>
+        <div class="order-card">
+          <div class="order-card-top">
+            <div>
+              <h3>Order #TK-8492</h3>
+              <p class="order-status">Arriving Tomorrow</p>
+            </div>
+            <span class="pill">Out for Delivery</span>
+          </div>
+          <div class="progress-track">
+            <div class="progress-fill"></div>
+          </div>
+          <div class="order-update">
+            <span aria-hidden="true">🚚</span>
+            <div>
+              <p class="update-title">Your package is on the way</p>
+              <p class="update-time">Last updated: 10 mins ago</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="how-it-works">
+    <div class="section-intro">
+      <h2>How It Works</h2>
+      <p>Three simple steps to peace of mind for you and your customers.</p>
+    </div>
+    <div class="steps">
+      <div class="step-card">
+        <div class="step-number">1</div>
+        <h3>Add Order</h3>
+        <p>Vendor logs the essential order details into the clean TrackCart dashboard. It takes seconds.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-number">2</div>
+        <h3>Share Link</h3>
+        <p>Instead of typing out a long response, simply send the customer a unique, secure order code via DM.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-number">3</div>
+        <h3>Track Status</h3>
+        <p>Customers check their status anytime, on any device. No account creation required, just instant clarity.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="track-order" id="tracking-widget">
+    <h2>Track Your Order</h2>
+    <div class="track-panel">
+      <form class="track-form">
+        <label for="tracking-code" class="visually-hidden">Order code</label>
+        <input type="text" id="tracking-code" name="tracking-code" placeholder="Enter Order Code (e.g. TK-12345)">
+        <button type="submit" class="btn btn-primary">Check Status</button>
+        <p id="track-result"></p>
+      </form>
+      <p class="track-hint">Try checking order code <strong>DEMO-123</strong> to see it in action.</p>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="logo">TrackCart</div>
+    <nav class="footer-links">
+      <a href="#">Contact Support</a>
+      <a href="#">Terms of Service</a>
+      <a href="#">Privacy Policy</a>
+    </nav>
+    <p class="footer-copy">© 2026 TrackCart. End the DM chaos.</p>
+  </footer>
+
+  <script type="module" src="js/script.js"></script>
+</body>
+</html>

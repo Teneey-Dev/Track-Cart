@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TrackCart | Your Store</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="index.html" class="logo">TrackCart</a>
+  </nav>
+
+  <main class="dashboard">
+
+    <div class="dashboard-welcome">
+      <span class="dashboard-icon" aria-hidden="true">👋</span>
+      <h1>Welcome back, <span id="dashboard-store-name">Your Store</span>!</h1>
+      <p>Here's what's happening with your orders.</p>
+    </div>
+
+    <div class="dashboard-stat-card">
+      <span class="stat-icon" aria-hidden="true">📦</span>
+      <p class="stat-number" id="order-count">0</p>
+      <p class="stat-label">Orders Tracked</p>
+    </div>
+
+    <a href="add-order.html" id="add-order-link" class="btn btn-primary btn-huge">
+      <span aria-hidden="true">➕</span> Add a New Order
+    </a>
+
+    <div class="dashboard-help">
+      <h2>How TrackCart works</h2>
+      <ul class="help-list">
+        <li><span aria-hidden="true">1️⃣</span> Add your customer's order and pick a status</li>
+        <li><span aria-hidden="true">2️⃣</span> We give you a tracking code</li>
+        <li><span aria-hidden="true">3️⃣</span> Share the code with your customer — they check it themselves!</li>
+      </ul>
+    </div>
+
+  </main>
+
+  <script type="module" src="js/script.js"></script>
+</body>
+</html>

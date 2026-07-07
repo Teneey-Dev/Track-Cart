@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TrackCart | Add Order</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="logo">TrackCart</div>
+  </nav>
+
+  <main class="add-order-page">
+    <h1>Add New Order</h1>
+    <p class="page-subtext">Log a new order and generate a tracking code for your customer.</p>
+
+    <form class="add-order-form" id="add-order-form">
+      <label for="customer-name">Customer Name</label>
+      <input type="text" id="customer-name" name="customer-name" placeholder="e.g. Leah Johnson">
+
+      
+
+      <label for="order-status">Status</label>
+      <select id="order-status" name="order-status">
+        <option value="pending">Pending</option>
+        <option value="processing">Processing</option>
+        <option value="shipped">Shipped</option>
+        <option value="delivered">Delivered</option>
+      </select>
+
+      <button type="submit" class="btn btn-primary">Add Order</button>
+    </form>
+
+    <p id="add-order-result"></p>
+  </main>
+
+  <script type="module" src="js/script.js"></script>
+</body>
+</html>
