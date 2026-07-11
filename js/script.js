@@ -52,7 +52,7 @@ if (form) {
 
     if (results.exists()) {
       const order = results.val()
-      trackResult.textContent = order.CustomerName + " Your delivery has been " + order.status
+      trackResult.textContent = order.customerName + " Your delivery has been " +  order.status   + " — Last updated: "   + new Date(order.lastUpdated).toLocaleString()
     } else {
       trackResult.textContent = "CHECK YOUR CODE WELL"
     }
@@ -76,10 +76,18 @@ if (parameters === null) {
 orderResult.textContent = "SAVING ORDER .."
     
 
-    const CustomerName = document.querySelector("#customer-name")
-    const customers = CustomerName.value
+    const customerName = document.querySelector("#customer-name")
+    const customers = customerName.value
     const status = document.querySelector("#order-status")
     const position = status.value
+    const item = document.querySelector("#order-item")
+    const orderItem = item.value
+    const price = document.querySelector("#order-price")
+    const orderPrice = price.value
+    const address = document.querySelector("#order-address")
+    const orderAddress = address.value
+    const rider = document.querySelector("#dispatch-rider")
+const dispatchRider = rider.value
   
 
     const orders = ref(database, "orders") 
@@ -98,12 +106,21 @@ orderResult.textContent = "SAVING ORDER .."
     const newRef = ref(database, "orders/" + newCode)
     const newOrder = await set(newRef, {
       store: parameters,
-      CustomerName: customers,
-      status: position
+      customerName: customers,
+      status: position,
+      item:orderItem,
+      price:orderPrice,
+      address: orderAddress,
+      rider:dispatchRider,
+      lastUpdated:Date.now()
     })
-  orderResult.textContent = "Order created! Code: " + newCode + "Share your store  Link and the code generated to the customer"
-  CustomerName.value = ""
+  orderResult.textContent = "Order created! Code: " + newCode + " Share your store  Link and the code generated to the customer"
+  customerName.value = ""
 status.value = ""
+item.value=""
+price.value=""
+address.value=""
+rider.value=""
   })
 }
 
@@ -200,11 +217,13 @@ signUpStoreName.value =""
 const loginForm = document.querySelector("#login-form")
 const loginEmail = document.querySelector("#login-email")
 const loginPassword = document.querySelector("#login-password")
+const loginStoreName = document.querySelector("#login-store-name")
 
 if (loginForm) {
 loginForm.addEventListener("submit", async function (event) {
   event.preventDefault()
 
+  const storeName = loginStoreName.value
   const  loginEmailInput =loginEmail.value
   const  loginpasswordInput =loginPassword.value
 
@@ -213,7 +232,11 @@ loginForm.addEventListener("submit", async function (event) {
   console.log(loginResult)
 
   loginEmail.value = ""
+  loginStoreName.value=""
   loginPassword.value = ""
+
+window.location.href = "dashboard.html?store=" + storeName
+
 })
 }
 
@@ -221,22 +244,75 @@ const dashboardName = document.querySelector("#dashboard-store-name")
 const dashboardAddOrder = document.querySelector("#add-order-link")
 
 if(dashboardName) {
+async function loadDashBoard() {
+  const dashboardInfo = ref(database, "orders")
+  const dashboardRef = await get(dashboardInfo)
+  const parameters = getStoreFromUrl()
+  const allOrders = dashboardRef.val()
+  const orderListContainer = document.querySelector("#order-list")
 
+  for (const code in allOrders) {
+    if (allOrders[code].store === parameters) {
+      const order = allOrders[code]
 
-   const parameters = getStoreFromUrl()
+      const orderBlock = document.createElement("div")
+      orderBlock.className = "order-block"
+
+      const info = document.createElement("p")
+      info.textContent = code + " — " + order.customerName + " — " + order.item
+
+      const statusSelect = document.createElement("select")
+      const statusOptions = ["confirmed", "packed", "out-for-delivery", "delivered"]
+
+      for (const option of statusOptions) {
+        const optionElement = document.createElement("option")
+        optionElement.value = option
+        optionElement.textContent = option
+        if (order.status === option) {
+          optionElement.selected = true
+        }
+        statusSelect.appendChild(optionElement)
+      }
+
+      statusSelect.addEventListener("change", async function () {
+        const orderRef = ref(database, "orders/" + code)
+        await set(orderRef, {
+          store: order.store,
+          customerName: order.customerName,
+          item: order.item,
+          price: order.price,
+          address: order.address,
+          rider: order.rider,
+          status: statusSelect.value,
+          lastUpdated: Date.now()
+        })
+      })
+
+      orderBlock.appendChild(info)
+      orderBlock.appendChild(statusSelect)
+      orderListContainer.appendChild(orderBlock)
+    }
+  }
 
   dashboardName.textContent = parameters
+  dashboardAddOrder.href = "add-order.html?store=" + parameters
+}
+
+ 
+
+loadDashBoard()
+
+  
 
 
-  dashboardAddOrder.href = "add-order.html?store="  + parameters
 
 }
 
-const googleLogIn = document.querySelector("#signup-google")
-const googleSignIn = document.querySelector("#login-google")
+const googleLogIn = document.querySelector("#login-google")
+const googleSignIn = document.querySelector("#signup-google")
 
-if (googleLogIn) {
-  googleLogIn.addEventListener("click", async function(){
+if (googleSignIn) {
+  googleSignIn.addEventListener("click", async function(){
     if (signUpStoreName.value.trim()==="") {
       signUpResult.textContent = "INPUT A STORE NAME"
       return
@@ -262,14 +338,18 @@ window.location.href = "dashboard.html?store=" + storeInput
   })
   }
 
-if (googleSignIn) {
-  googleSignIn.addEventListener("click", async function(){
+if (googleLogIn) {
+  googleLogIn.addEventListener("click", async function(){
+
+const loginStoreName = document.querySelector("#login-store-name")
+
+const storeName = loginStoreName.value
 
     const googleForm = await signInWithPopup(auth, provider)
     console.log(googleForm)
+ 
+window.location.href = "dashboard.html?store=" + storeName
 
-     const stores = ref(database, "stores") 
-    const storesRef = await get(stores)
-    console.log(storesRef.val())
+    loginStoreName.value=""
   })
 }

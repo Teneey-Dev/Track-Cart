@@ -531,3 +531,40 @@ a {
   font-size: 14px;
   color: #3c4a42;
 }
+
+#order-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.order-block {
+  background: #fff;
+  border-radius: 12px;
+  padding: 16px 20px;
+  box-shadow: 0 4px 16px rgba(16,185,129,0.08);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.order-block p {
+  font-size: 14px;
+  font-weight: 600;
+  color: #151c27;
+  margin: 0;
+}
+
+.order-block select {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #bbcabf;
+  font-size: 13px;
+  font-weight: 600;
+  color: #006c49;
+  background: #f0f3ff;
+  cursor: pointer;
+}
