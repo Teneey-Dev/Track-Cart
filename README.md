@@ -13,7 +13,8 @@ TrackCart gives every order a unique, readable tracking code. Vendors add and up
 ## Features
 
 - **Customer order tracking** — enter a code, see live status and last-updated time instantly
-- **Vendor sign-up & login** — email/password or Google Sign-In
+- **Vendor sign-up** — email/password or Google Sign-In
+- **Vendor login** — email/password (store name entered manually; see Known Limitations)
 - **Multi-vendor architecture** — every vendor's data is isolated by store name, all on shared pages
 - **Auto-generated tracking codes** (e.g. `TCK-1`, `TCK-2`) — human-readable, not random strings
 - **Rich order data** — customer name, item, price, delivery address, and dispatch rider, not just a status word
@@ -76,7 +77,7 @@ stores/
 ```
 
 - `orders` is looked up directly by code — codes are globally unique across all vendors
-- `stores` links a store name to the Firebase Auth account that owns it, used for vendor sign-up/login
+- `stores` links a store name to the Firebase Auth account that owns it, used for vendor sign-up
 
 ## Security
 
@@ -102,6 +103,7 @@ Reads are public (required, since customers tracking an order are never logged i
 ## Known Limitations
 
 - **Login doesn't verify store ownership.** A vendor types their store name at login rather than the app looking up which store their account owns — meaning currently, an authenticated vendor could type any store name and reach that dashboard. Fine for a demo/portfolio stage; would need proper ownership verification before onboarding real, competing vendors.
+- **Google Sign-In is available for sign-up only, not login.** Since Google authentication alone can't verify which store an account owns (and login doesn't cross-check the `stores` record), Google login was removed to reduce the surface of the ownership-verification gap above. Vendors who sign up with Google should use email/password to log back in, or reset a password via Firebase if needed.
 - **No account linking between sign-in methods.** Signing up with email/password and later using Google (or vice versa) with a different address creates a separate, unlinked account.
 - **Some Firebase errors (invalid password, email already in use, etc.) currently surface as raw console errors** rather than friendly in-app messages.
 
@@ -115,7 +117,7 @@ This project has no build step — just open the files with a local server (e.g.
 
 ## Roadmap (Future Ideas)
 
-- [ ] Verify store ownership properly at login (rather than trusting typed input)
+- [ ] Verify store ownership properly at login (rather than trusting typed input) — would also allow restoring Google login
 - [ ] Kanban-style dashboard view (group orders visually by status)
 - [ ] Shareable "digital waybill" — a screenshot-friendly order summary vendors can post to Instagram Stories as proof of active shipping
 - [ ] Friendly in-app error messages for all Firebase auth errors

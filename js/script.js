@@ -100,7 +100,7 @@ const dispatchRider = rider.value
       count = 0
     }
 
-    const newCode = "TCK-" + (count + 1)
+    const newCode = "TCK-10" + (count + 1)
 
 
     const newRef = ref(database, "orders/" + newCode)
@@ -308,7 +308,6 @@ loadDashBoard()
 
 }
 
-const googleLogIn = document.querySelector("#login-google")
 const googleSignIn = document.querySelector("#signup-google")
 
 if (googleSignIn) {
@@ -338,18 +337,3 @@ window.location.href = "dashboard.html?store=" + storeInput
   })
   }
 
-if (googleLogIn) {
-  googleLogIn.addEventListener("click", async function(){
-
-const loginStoreName = document.querySelector("#login-store-name")
-
-const storeName = loginStoreName.value
-
-    const googleForm = await signInWithPopup(auth, provider)
-    console.log(googleForm)
- 
-window.location.href = "dashboard.html?store=" + storeName
-
-    loginStoreName.value=""
-  })
-}
