@@ -2,6 +2,8 @@
 
 A zero-friction order tracking web app built for social media vendors (Instagram, WhatsApp, Facebook sellers). No apps to download, no customer accounts, no back-and-forth DMs — just a simple code a customer can check anytime.
 
+🔗 **[Live Demo](https://track-cart.pxxl.run)** — try tracking order code `DEMO-123`
+
 ## The Problem
 
 Selling through social media DMs means constant "where's my order?" messages, and buyers are often skeptical of vendors since fraud is common. Vendors end up manually replying to the same question over and over, with no way to prove they're actively working on an order.
@@ -20,6 +22,7 @@ TrackCart gives every order a unique, readable tracking code. Vendors add and up
 - **Rich order data** — customer name, item, price, delivery address, and dispatch rider, not just a status word
 - **Vendor dashboard** — view every order for your store, and update its status live from a dropdown
 - **Basic Firebase security rules** — only authenticated vendors can write data; anyone can read (needed for anonymous customer tracking)
+- **Installable as a PWA** — add TrackCart to your phone or desktop home screen and open it like a native app
 - **Fully responsive** — mobile-first design, scales up to desktop
 
 ## Tech Stack
@@ -36,6 +39,11 @@ trackcart/
 ├── vendor.html         # Vendor sign-up / login
 ├── add-order.html      # Vendor: add a new order
 ├── dashboard.html       # Vendor: view & update your orders
+├── manifest.json       # PWA metadata (name, icons, theme color)
+├── service-worker.js   # Minimal service worker, enables "Install app"
+├── assets/
+│   ├── icon-192.png
+│   └── icon-512.png
 ├── css/
 │   └── styles.css      # All styling, mobile-first with desktop breakpoints
 ├── js/

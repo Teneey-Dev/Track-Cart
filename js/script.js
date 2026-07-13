@@ -28,7 +28,9 @@ import {getAuth, GoogleAuthProvider, signInWithPopup, createUserWithEmailAndPass
   return store;
 }
 
-
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("service-worker.js")
+}
 
 const form = document.querySelector(".track-form")
 
